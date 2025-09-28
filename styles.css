@@ -1,0 +1,283 @@
+/* ---------------- Base Layout ---------------- */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 1rem;
+  background-color: #fddbe9;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: #ffeef2;
+  padding: 1rem;
+  border-bottom: 2px solid #f8cdd8;
+  align-items: center;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #d94f70;
+}
+
+.top-bar {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ---------------- Centering ---------------- */
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ---------------- Tooltip ---------------- */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #4a4a4a;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.5rem;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* ---------------- Prompt & Quote ---------------- */
+#daily-prompt {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.quote-box {
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: #555;
+}
+
+/* ---------------- Emoji Picker ---------------- */
+.emoji-btn {
+  font-size: 1.5rem;
+  margin: 0.2rem;
+  padding: 0.5rem;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  transition: transform 0.2s ease;
+}
+
+.emoji-btn:hover {
+  transform: scale(1.2);
+}
+
+.emoji-btn.selected {
+  border-bottom: 2px solid #d94f70;
+}
+
+/* ---------------- Entry Box ---------------- */
+textarea {
+  width: 100%;
+  max-width: 600px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  border: 2px solid #f8cdd8;
+  border-radius: 8px;
+  resize: vertical;
+  background-color: #fff0f5;
+}
+
+#word-count {
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* ---------------- Mood Ring ---------------- */
+#mood-ring-container {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#mood-ring {
+  transform: rotate(-90deg);
+}
+
+#progress-ring {
+  transition: stroke-dashoffset 0.5s ease, stroke 0.3s ease;
+  stroke-width: 8;
+
+}
+
+/* ---------------- Buttons ---------------- */
+button {
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  background-color: #d94f70;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #c03e5f;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* ---------------- Status Message ---------------- */
+#status-msg {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ---------------- Past Entries ---------------- */
+#past-entries {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+  width: 100%;
+  max-width: 600px;
+}
+
+#past-entries.visible {
+  max-height: 600px;
+  opacity: 1;
+}
+
+#entry-list {
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+}
+
+#entry-list li {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  background-color: #fff0f5;
+  border-left: 4px solid #d94f70;
+  border-radius: 6px;
+}
+
+
+/* ---------------- Dark Mode ---------------- */
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #eee;
+}
+
+body.dark-mode textarea,
+body.dark-mode #search-bar {
+  background-color: #2a2a2a;
+  color: #eee;
+  border-color: #555;
+}
+
+body.dark-mode button {
+  background-color: #444;
+  color: #fff;
+}
+
+body.dark-mode .emoji-btn.selected {
+  border-bottom: 2px solid #fff;
+}
+
+body.dark-mode #entry-list li {
+  background-color: #2a2a2a;
+  border-left-color: #888;
+}
+
+/* ---------------- Confetti Canvas ---------------- */
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+/* ---------------- Save Flash ---------------- */
+.saved-flash {
+  animation: flash 0.3s ease;
+}
+
+@keyframes flash {
+  0% { background-color: #fff0f5; }
+  50% { background-color: #d94f70; }
+  100% { background-color: #fff0f5; }
+}
+
+.summary-box {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #555;
+}
+
+#saved-badge {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: #d94f70;
+  color: white;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: 999;
+  pointer-events: none;
+}
+
+#saved-badge.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes moodGlow {
+  0%   { box-shadow: 0 0 0px transparent; }
+  50%  { box-shadow: 0 0 20px var(--glow-color); }
+  100% { box-shadow: 0 0 0px transparent; }
+}
+
+.glow-ring {
+  animation: moodGlow 1.2s ease-out;
+}
